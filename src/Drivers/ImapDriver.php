@@ -162,7 +162,7 @@ class ImapDriver implements IDriver
 		$headers = [];
 		$lastHeader = NULL;
 		foreach ($lines as $line) {
-			if (mb_strpos($line, ' ', 'UTF-8') === 0) {
+			if(mb_substr($line, 0, 1, 'UTF-8') === " ") {
 				$headers[$lastHeader] .= $line;
 			} else {
 				$parts = explode(':', $line);

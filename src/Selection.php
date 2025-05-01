@@ -2,11 +2,12 @@
 
 namespace PhpMailClient;
 
+use ArrayAccess;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 
-class Selection implements Countable, IteratorAggregate
+class Selection implements Countable, IteratorAggregate, ArrayAccess
 {
 
 	/** @var Connection */
@@ -128,6 +129,26 @@ class Selection implements Countable, IteratorAggregate
 	public function getIterator(): ArrayIterator
 	{
 		return new ArrayIterator($this->fetchAll());
+	}
+
+	public function offsetExists($offset): bool
+	{
+		return isset($this->fetchAll()[$offset]);
+	}
+
+	public function offsetGet($offset)
+	{
+		return $this->fetchAll()[$offset] ?? NULL;
+	}
+
+	public function offsetSet($offset, $value)
+	{
+		throw new \BadMethodCallException('Not implemented.');
+	}
+
+	public function offsetUnset($offset)
+	{
+		throw new \BadMethodCallException('Not implemented.');
 	}
 
 }

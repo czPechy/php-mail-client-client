@@ -6,7 +6,6 @@ use PhpMailClient\Contact;
 use PhpMailClient\ContactList;
 use PhpMailClient\Drivers\IDriver;
 use PhpMailClient\Drivers\ImapDriver;
-use PhpMailClient\Extensions\MailLibraryExtension;
 use PhpMailClient\Mail;
 use PhpMailClient\Mailbox;
 use PhpMailClient\Selection;
@@ -25,8 +24,6 @@ class_alias(IStructure::class, '\greeny\MailLibrary\Structures\IStructure');
 class_alias(ImapStructure::class, '\greeny\MailLibrary\Structures\ImapStructure');
 class_alias(IDriver::class, '\greeny\MailLibrary\Drivers\IDriver');
 class_alias(ImapDriver::class, '\greeny\MailLibrary\Drivers\ImapDriver');
-class_alias(MailLibraryExtension::class, '\greeny\MailLibrary\Extensions\MailLibraryExtension');
-
 
 spl_autoload_register(function ($type) {
 	static $paths = [
@@ -41,7 +38,6 @@ spl_autoload_register(function ($type) {
 		'greeny\maillibrary\structures\imapstructure' => 'Structures/ImapStructure.php',
 		'greeny\maillibrary\drivers\idriver' => 'Drivers/IDriver.php',
 		'greeny\maillibrary\drivers\imapdriver' => 'Drivers/ImapDriver.php',
-		'greeny\maillibrary\extensions\maillibraryextension' => 'Extensions/MailLibraryExtension.php',
 	];
 
 	$type = ltrim(strtolower($type), '\\'); // PHP namespace bug #49143

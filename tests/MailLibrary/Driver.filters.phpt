@@ -35,5 +35,5 @@ $exceptions = array(
 foreach($exceptions as $exception) {
 	Assert::exception(function()use($driver, $exception){
 		$driver->checkFilter($exception->key, $exception->value);
-	}, '\\greeny\\MailLibrary\\DriverException', $exception->exception);
+	}, '\\PhpMailClient\\DriverException', $exception->exception);
 }
