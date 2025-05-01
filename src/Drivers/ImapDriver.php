@@ -286,7 +286,7 @@ class ImapDriver implements IDriver
 
 	public function moveMail(int $mailId, string $toMailbox): void
 	{
-		if (!imap_mail_move($this->resource, $mailId, $this->server . $this->encodeMailboxName($toMailbox), CP_UID)) {
+		if (!imap_mail_move($this->resource, $mailId, $this->encodeMailboxName($toMailbox), CP_UID)) {
 			throw new DriverException(sprintf('Cannot copy mail to mailbox %s: %s', $toMailbox, imap_last_error()));
 		}
 	}
